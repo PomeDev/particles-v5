@@ -135,7 +135,7 @@
         }
 
         .working {
-            animation: rote 120s linear infinite;
+            /* animation: rote 120s linear infinite; */
         }
 
         @keyframes rote {
@@ -214,7 +214,7 @@
             <h2 class="hero-text">Consumers<br> expect choice and control over their digital marketing experience.</h2>
             <img
             id="logo"
-            src="./assets/RF-Circle-02.png"
+            src="./assets/RF-Circle-Wave.png"
         >
         </div>
         <h3 class="hero-subtext">Engage mobile users who have made an informed choice.</h3>
@@ -679,15 +679,6 @@
     this.context.putImageData(imageData, 0, 0);
     }
     
-    _webglRenderer() {
-    vertices = new Float32Array( this.vertices );
-    this.context.lineWidth(2.6);
-    this.context.bufferData(this.context.ARRAY_BUFFER, vertices, this.context.DYNAMIC_DRAW);
-    this.context.clear(this.context.COLOR_BUFFER_BIT | this.context.DEPTH_BUFFER_BIT);
-    this.context.drawArrays( this.context.POINTS, 0, this.particles.length );
-    this.context.flush();
-    }
-    
     _initParticles() {
     this.particles = undefined;
     this.particles = [];
@@ -739,25 +730,7 @@
     }
     }
     }
-    
-    _fade() {
-    if (
-    this.fadePosition === 'explode' ||
-    this.fadePosition === 'top' ||
-    this.fadePosition === 'left' ||
-    this.fadePosition === 'bottom' ||
-    this.fadePosition === 'right'
-    ) {
-    this.state = 'stopping';
-    } else {
-    this.state = 'stopped';
-    }
-    for (index = 0; index < this.origins.length; index++) {
-    origin = origins[index];
-    this._fadeOriginPosition(this.origins[index]);
-    this._fadeOriginDirection(this.particles[index]);
-    }
-    }
+        
     
     _fadeOriginPosition(origin) {
     switch (this.fadePosition) {
@@ -971,11 +944,11 @@
     }
     
     exports.NextParticle = NextParticle;
-    const nextParticles = document.getElementsByClassName('next-particle');
-    for (let nextParticleIndex = 0; nextParticleIndex < nextParticles.length; nextParticleIndex++) {
-    const elem = nextParticles[nextParticleIndex];
-    elem.nextParticle = new NextParticle(elem);
-    }
+    // const nextParticles = document.getElementsByClassName('next-particle');
+    // for (let nextParticleIndex = 0; nextParticleIndex < nextParticles.length; nextParticleIndex++) {
+    // const elem = nextParticles[nextParticleIndex];
+    // elem.nextParticle = new NextParticle(elem);
+    // }
     }(window));
 
 
@@ -988,8 +961,9 @@
         initPosition: 'random',
         initDirection: 'none',
         particleGap: 2,
-        noise: 70,
-        gravity: .1
+        noise: 10,
+        gravity: .1,
+        mouseForce: 20,
     });
    
     //    SIZING FUNCTIONS
@@ -999,7 +973,6 @@
             nextParticle.maxHeight = 1000
             nextParticle.width = window.innerWidth
             nextParticle.height = window.innerHeight
-            console.log('wide')
         }
         nextParticle.start()
     }
@@ -1008,8 +981,8 @@
     },100)
     window.onresize = function() {
         if (window.innerWidth > 1800) {
-            nextParticle.maxWidth = 900
-            nextParticle.maxHeight = 900
+            nextParticle.maxWidth = 1200
+            nextParticle.maxHeight = 1200
 
         } else {
             nextParticle.maxWidth = 600
@@ -1026,7 +999,6 @@
     setTimeout(function() {
         const nextCanvas = document.querySelectorAll('canvas')[1]
         nextCanvas.classList.add('working')
-        console.log(nextCanvas)
     }, 2000)
 }
   </script>
