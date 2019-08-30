@@ -968,9 +968,9 @@
    
     //    SIZING FUNCTIONS
     function sizeUp() {
-        if (window.innerWidth > 1800) {
-            nextParticle.maxWidth = 1200
-            nextParticle.maxHeight = 1200
+        if (window.innerWidth > 1200) {
+            nextParticle.maxWidth = 1000
+            nextParticle.maxHeight = 1000
             nextParticle.width = window.innerWidth
             nextParticle.height = window.innerHeight
         }
@@ -980,9 +980,9 @@
         sizeUp()
     },100)
     window.onresize = function() {
-        if (window.innerWidth > 1800) {
-            nextParticle.maxWidth = 1200
-            nextParticle.maxHeight = 1200
+        if (window.innerWidth > 1200) {
+            nextParticle.maxWidth = 1000
+            nextParticle.maxHeight = 1000
 
         } else {
             nextParticle.maxWidth = 600
